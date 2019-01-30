@@ -231,6 +231,75 @@ public class BoardDaoImpl implements BoardDao {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-
     }
+
+
+    @Override
+    public Long getLastInsertId() {
+        Long lastId = 0L;
+
+        Connection conn = ConnectionContextHolder.getConnection();
+        try{
+            try(PreparedStatement ps = conn.prepareStatement(BoardDaoSQL.SELECT_LAST_INSERT_ID);) {
+                try(ResultSet rs = ps.executeQuery();){
+                    if (rs.next()) {
+                        lastId = rs.getLong(1);
+                    }
+                }
+            }
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+        return lastId;
+    }
+
+    @Override
+    public void updateLastInsertId(Long post_id) {
+        try{
+            Connection conn = ConnectionContextHolder.getConnection();
+            try(PreparedStatement ps = conn.prepareStatement(BoardDaoSQL.UPDATE_LAST_INSERT_ID);) {
+                ps.setLong(1, post_id);
+                ps.setLong(2, post_id);
+                ps.executeUpdate(); // 입력,수정,삭제 건수 가 리턴된다.
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    @Override
+    public void updateGroupSeqGt(int fam_num, int fam_seq) {
+        try{
+            Connection conn = ConnectionContextHolder.getConnection();
+            try(PreparedStatement ps = conn.prepareStatement(BoardDaoSQL.UPDATE_GROUP_SEQ_GT);) {
+                ps.setInt(1, fam_num);
+                ps.setInt(2, fam_seq);
+                ps.executeUpdate(); // 입력,수정,삭제 건수 가 리턴된다.
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    @Override
+    public void addReBoard(Board board) {
+        try{
+            Connection conn = ConnectionContextHolder.getConnection();
+            try(PreparedStatement ps = conn.prepareStatement(BoardDaoSQL.INSERT_RE);) {
+
+                //title, user_id, nickname, content
+                ps.setString(1, board.getTitle());
+                ps.setLong(2, board.getUser_id());
+                ps.setString(3, board.getNickname());
+                ps.setString(4, board.getContent());
+                ps.setInt(5, board.getFam_num());
+                ps.setInt(6, board.getFam_seq() + 1);
+                ps.setInt(7, board.getFam_lev() + 1);
+                ps.executeUpdate(); // 입력,수정,삭제 건수 가 리턴된다.
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
 }

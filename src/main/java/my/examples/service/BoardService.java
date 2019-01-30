@@ -11,6 +11,7 @@ public interface BoardService {
     public void deleteBoard(Long post_id);
     public void addBoard(Board board);
     public void modify(Board board);
+    void addReBoard(Board board);
 
 
 

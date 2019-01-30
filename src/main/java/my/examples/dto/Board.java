@@ -13,6 +13,7 @@ public class Board {
     private int fam_num;
     private int fam_lev;
     private int fam_seq;
+    private Long user_id;
 
 
 
@@ -87,6 +88,14 @@ public class Board {
         this.regdate = regdate;
     }
 
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
     public long getView() {
         return view;
     }
@@ -131,6 +140,7 @@ public class Board {
                 ", fam_num=" + fam_num +
                 ", fam_lev=" + fam_lev +
                 ", fam_seq=" + fam_seq +
+                ", user_id=" + user_id +
                 '}';
     }
 }

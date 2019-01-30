@@ -119,4 +119,27 @@ public class BoardServiceImpl implements  BoardService {
         }
 
     }
+    @Override
+    public void addReBoard(Board board) {
+        Connection conn = null;
+        BoardDao boardDao = new BoardDaoImpl();
+        try {
+            conn = DBUtil.getInstance().getConnection();
+            ConnectionContextHolder.setConnection(conn);
+
+            Board oBoard = boardDao.getBoard(board.getPost_id());
+            board.setFam_seq(oBoard.getFam_seq());
+            board.setFam_num(oBoard.getFam_num());
+            board.setFam_lev(oBoard.getFam_lev());
+            boardDao.updateGroupSeqGt(oBoard.getFam_num(), oBoard.getFam_seq());
+            boardDao.addReBoard(board);
+
+            conn.commit(); // 트랜젝션 commit
+        }catch(Exception ex){
+            DBUtil.rollback(conn);
+            ex.printStackTrace();
+        }finally {
+            DBUtil.close(conn);
+        }
+    }
 }
