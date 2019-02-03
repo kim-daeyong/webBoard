@@ -157,9 +157,20 @@ public class BoardDaoImpl implements BoardDao {
             String sql = "INSERT INTO freeboard.freepost(userid, contents, title) VALUES(?, ?, ?)";
             ps = conn.prepareStatement(sql);
             */
-                ps.setString(1, board.getNickname());
-                ps.setString(2, board.getContent());
-                ps.setString(3, board.getTitle());
+//                ps.setString(1, board.getTitle());
+//                ps.setLong(2, board.getUser_id());
+//                ps.setString(3, board.getNickname());
+//                ps.setString(4, board.getContent());
+                  ps.setString(3, board.getTitle());
+//               ps.setLong(2, board.getUser_id());
+                  ps.setString(1, board.getNickname());
+                  ps.setString(2, board.getContent());
+
+                ps.setInt(4, board.getFam_num());
+                ps.setInt(5, board.getFam_seq());
+                ps.setInt(6, board.getFam_lev());
+
+
                 ps.executeUpdate(); // 입력,수정,삭제 건수 가 리턴된다.
             }
         }catch(Exception ex){
