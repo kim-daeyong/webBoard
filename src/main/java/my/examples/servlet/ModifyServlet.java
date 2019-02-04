@@ -37,14 +37,13 @@ public class ModifyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
 
-        Long post_id = 0L;
+        long post_id = 0L;
         String title = null;
         String content = null;
         try {
             String idStr = req.getParameter("post_id");
             title = req.getParameter("title");
             content = req.getParameter("content");
-
             post_id = Long.parseLong(idStr);
 
         } catch (Exception ex) { }

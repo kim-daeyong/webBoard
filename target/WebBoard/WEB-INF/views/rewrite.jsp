@@ -41,7 +41,7 @@
 </nav>
 
 <h1 style="text-align:center">게시글 작성</h1>
-<form action="/write" method="post">
+<form action="/rewrite" method="post">
 <div class="container table-bordered" style="padding-top: 15px;">
         <div class="form-group">
             <label for="nickname">작성자</label>
@@ -49,16 +49,16 @@
         </div>
         <div class="form-group">
             <label for="title">제목</label>
-            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요. " name="title">
+            <input type="text" class="form-control" id="title" value = "Re : ${board.title}" name="title">
 
         </div>
         <div class="form-group">
             <label for="content">내용</label>
-            <textarea class="form-control" rows="10" id="content" name="content"></textarea>
+            <textarea class="form-control" rows="10" id="content" name="content">Re : ${board.content}</textarea>
         </div>
         <button type="cancel" class="pull-right btn btn-default"><a href="/freeboard">취소</a></button>
         <button type="submit" class="pull-right btn btn-default">올리기</button>
-</div>
+    </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </form>

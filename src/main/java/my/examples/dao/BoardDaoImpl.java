@@ -166,9 +166,9 @@ public class BoardDaoImpl implements BoardDao {
                   ps.setString(1, board.getNickname());
                   ps.setString(2, board.getContent());
 
-                ps.setInt(4, board.getFam_num());
-                ps.setInt(5, board.getFam_seq());
-                ps.setInt(6, board.getFam_lev());
+//                ps.setInt(4, board.getFam_num());
+//                ps.setInt(5, board.getFam_seq());
+//                ps.setInt(6, board.getFam_lev());
 
 
                 ps.executeUpdate(); // 입력,수정,삭제 건수 가 리턴된다.
@@ -298,14 +298,13 @@ public class BoardDaoImpl implements BoardDao {
             Connection conn = ConnectionContextHolder.getConnection();
             try(PreparedStatement ps = conn.prepareStatement(BoardDaoSQL.INSERT_RE);) {
 
-                //title, user_id, nickname, content
-                ps.setString(1, board.getTitle());
-                ps.setLong(2, board.getUser_id());
-                ps.setString(3, board.getNickname());
-                ps.setString(4, board.getContent());
-                ps.setInt(5, board.getFam_num());
-                ps.setInt(6, board.getFam_seq() + 1);
-                ps.setInt(7, board.getFam_lev() + 1);
+                ps.setString(3, board.getTitle());
+//                ps.setLong(2, board.getUser_id());
+                ps.setString(1, board.getNickname());
+                ps.setString(2, board.getContent());
+                ps.setInt(4, board.getFam_num());
+                ps.setInt(5, board.getFam_seq() + 1);
+                ps.setInt(6, board.getFam_lev() + 1);
                 ps.executeUpdate(); // 입력,수정,삭제 건수 가 리턴된다.
             }
         }catch(Exception ex){
