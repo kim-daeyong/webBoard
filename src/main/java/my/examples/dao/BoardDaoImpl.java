@@ -298,10 +298,10 @@ public class BoardDaoImpl implements BoardDao {
             Connection conn = ConnectionContextHolder.getConnection();
             try(PreparedStatement ps = conn.prepareStatement(BoardDaoSQL.INSERT_RE);) {
 
-                ps.setString(3, board.getTitle());
 //                ps.setLong(2, board.getUser_id());
                 ps.setString(1, board.getNickname());
                 ps.setString(2, board.getContent());
+                ps.setString(3, board.getTitle());
                 ps.setInt(4, board.getFam_num());
                 ps.setInt(5, board.getFam_seq() + 1);
                 ps.setInt(6, board.getFam_lev() + 1);

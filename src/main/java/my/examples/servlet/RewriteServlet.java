@@ -49,6 +49,7 @@ public class RewriteServlet extends HttpServlet {
             try{
                 String idStr = req.getParameter("post_id");
                 post_id = Long.parseLong(idStr);
+
             }catch(Exception ex){
                 ex.printStackTrace();
                 return;
@@ -56,6 +57,7 @@ public class RewriteServlet extends HttpServlet {
 
             String title = req.getParameter("title");
             String content = req.getParameter("content");
+
 
             User user = (User) req.getSession().getAttribute("logininfo");
 

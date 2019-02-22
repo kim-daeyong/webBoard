@@ -47,6 +47,7 @@
             <label for="nickname">작성자</label>
             <input type="text" class="form-control" id="nickname" value ="${sessionScope.logininfo.nickname}" name="nickname" readonly>
         </div>
+    <input type="hidden"  id="post_id" name="post_id" value = "${board.post_id}"/>
         <div class="form-group">
             <label for="title">제목</label>
             <input type="text" class="form-control" id="title" value = "Re : ${board.title}" name="title">
