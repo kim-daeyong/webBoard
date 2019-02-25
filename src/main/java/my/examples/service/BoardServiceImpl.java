@@ -92,6 +92,9 @@ public class BoardServiceImpl implements  BoardService {
             ConnectionContextHolder.setConnection(conn);
 
             boardDao.addBoard(board);
+            Long lastInsertId = boardDao.getLastInsertId();
+            boardDao.updateLastInsertId(lastInsertId);
+
             conn.commit(); // 트랜젝션 commit
         }catch(Exception ex){
             DBUtil.rollback(conn);

@@ -19,9 +19,9 @@ public class BoardDaoSQL {
 //                    "values( ?, ?, ?, ? , ? , ?, ? )";
             "insert into freepost (nickname, content, title, fam_num, fam_seq, fam_lev) values( ?, ?, ? , ? , ?, ? )";
     public static final String UPDATE_GROUP_SEQ_GT =
-            "update board set fam_seq = fam_seq + 1 where fam_num = ? and fam_seq > ?";
+            "update freepost set fam_seq = fam_seq + 1 where fam_num = ? and fam_seq > ?";
     public static final String SELECT_LAST_INSERT_ID =
             "select LAST_INSERT_ID()";
     public static final String UPDATE_LAST_INSERT_ID =
-            "update board set fam_num = ? where post_id = ?";
+            "update freepost set fam_num = ? where post_id = ?";
 }
