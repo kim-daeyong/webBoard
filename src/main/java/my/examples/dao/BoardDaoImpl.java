@@ -267,12 +267,12 @@ public class BoardDaoImpl implements BoardDao {
     }
 
     @Override
-    public void updateLastInsertId(Long id) {
+    public void updateLastInsertId(Long post_id) {
         try{
             Connection conn = ConnectionContextHolder.getConnection();
             try(PreparedStatement ps = conn.prepareStatement(BoardDaoSQL.UPDATE_LAST_INSERT_ID);) {
-                ps.setLong(1, id);
-                ps.setLong(2, id);
+                ps.setLong(1, post_id);
+                ps.setLong(2, post_id);
                 ps.executeUpdate(); // 입력,수정,삭제 건수 가 리턴된다.
             }
         }catch(Exception ex){
