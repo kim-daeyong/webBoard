@@ -15,9 +15,9 @@ public class BoardDaoSQL {
     public static final String MODIFY =
             "UPDATE freepost SET title = ?, content = ? WHERE post_id = ?";
     public static final String INSERT_RE =
-//            "insert into freepost (title, user_id, nickname, content, fam_num, fam_seq, fam_lev) " +
-//                    "values( ?, ?, ?, ? , ? , ?, ? )";
-            "insert into freepost (nickname, content, title, fam_num, fam_seq, fam_lev) values( ?, ?, ? , ? , ?, ? )";
+            "insert into freepost (title, nickname, content, fam_num, fam_seq, fam_lev, user_id) " +
+                    "values( ?, ?, ?, ? , ? , ?, ? )";
+//            "insert into freepost (nickname, content, title, fam_num, fam_seq, fam_lev) values( ?, ?, ? , ? , ?, ? )";
     public static final String UPDATE_GROUP_SEQ_GT =
             "update freepost set fam_seq = fam_seq + 1 where fam_num = ? and fam_seq > ?";
     public static final String SELECT_LAST_INSERT_ID =

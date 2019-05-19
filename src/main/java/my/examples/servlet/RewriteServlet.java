@@ -46,8 +46,9 @@ public class RewriteServlet extends HttpServlet {
         @Override
         protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             long post_id = 0L;
+            String idStr = req.getParameter("post_id");
+
             try{
-                String idStr = req.getParameter("post_id");
                 post_id = Long.parseLong(idStr);
 
             }catch(Exception ex){
@@ -67,6 +68,7 @@ public class RewriteServlet extends HttpServlet {
             board.setTitle(title);
             board.setContent(content);
             board.setNickname(user.getNickname());
+            board.setUser_id(user.getUser_id());
             boardService.addReBoard(board);
             resp.sendRedirect("/freeboard");
         }

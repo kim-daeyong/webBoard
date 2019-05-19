@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+
+//freeboard 상세보기
 @WebServlet(name = "FreeReadServlet", urlPatterns = "/read")
 public class FreeReadServlet extends HttpServlet {
     @Override
